@@ -1,0 +1,9 @@
+{
+    "dependencies"    : [],
+    "name"            : "Feedreader",
+    "description"     : "A Widget to read RSS/Atom feeds",
+    "version"         : "0.0.1",
+    "activate"        : "info/activate",
+    "deactivate"      : "info/deactivate",
+    "upgrade"         : "info/upgrade"
+}
