@@ -5,10 +5,10 @@ feedreader 0.1 is a widget for [No-CMS](https://github.com/goFrendiAsgard/No-CMS
 feedreader shows a widget with an rss/atom feed items.
 
 ## Install
-1) Copy the <b>feedreader/</b> folder in <b>modules/</b>.
-2) Go to <b>CMS Management->Modules</b> and Activate the module.
-3) Add the <pre>{{ widget_name:feedreader }}</pre> in your theme layout or in your view.
-4) Set in your CSS the widget styles by classes: .feed_title, feed_item, item_date
+1) Copy the <b>feedreader/</b> folder in <b>modules/</b>.<br>
+2) Go to <b>CMS Management->Modules</b> and Activate the module.<br>
+3) Add the <pre>{{ widget_name:feedreader }}</pre> in your theme layout or in your view.<br>
+4) Set in your CSS the widget styles by classes: .feed_title, feed_item, item_date.<br>
 
 That's all<br>
 Alfredo Cosco
