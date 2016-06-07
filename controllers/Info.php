@@ -128,7 +128,7 @@ class Info extends CMS_Module {
             PRIV_EVERYONE, $module_path.'/feedreader_widget/feed');
 		
 		$data = array('flimit'=>'5',
-					  'cache_dir'=>'modules/feedreader/feedcache',
+					  'cache_dir'=>'modules/feedreader/cache',
 					  'cache_time'=>'3600',
 					  'date_format'=>'d/m/y',
 					  '_created_at'=>date("Y-m-d H:i:s")
