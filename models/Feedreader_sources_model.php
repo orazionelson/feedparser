@@ -7,13 +7,25 @@
  */
 class Feedreader_sources_model extends  CMS_Model{
     
+    
     public function get_sources(){
         $query = $this->db->select('feedreader_sources.url')
             ->from($this->t('feedreader_sources').' as feedreader_sources')
             ->get();
-        $result = $query->result_array();
-        return $result;
+
+        
+        foreach ($query->result_array() as $row)
+		{
+			$res[]=$row['url'];
+		}
+		
+		$result=implode(",",$res);
+		
+		//$result=array($resn);
+
+        return $res;
     }
+
     
     public function get_data($keyword, $page=0){
         $limit = 10;

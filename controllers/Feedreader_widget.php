@@ -2,9 +2,8 @@
 
 class Feedreader_widget extends CMS_Controller {
 	
-	protected $limit="";
 	protected $sources=array();
-	protected $rss_url="";
+	protected $config=array();
 	
     public function feed(){
 		//models
@@ -12,35 +11,33 @@ class Feedreader_widget extends CMS_Controller {
         $this->load->model('feedreader_config_model');       
         
         //libraries
-        $this->load->library('feedparser');
+        $this->load->library('SimplePie');
   
 		// get feed sources and module configuration
 		$sources=$this->feedreader_sources_model->get_sources();
 		$config=$this->feedreader_config_model->get_config();
 		
-		$this->limit=$config['flimit'];
 		// class trigger
-		$rss = new feedparser;
-		$this->rss=$rss;
-		
-		// set options
-		$rss->cache_dir   = './'.$config['cache_dir'];//'./modules/feedreader/feedcache'; // cartella per la cache
-		$rss->cache_time  = $config['cache_time'];      // durata della cache (secondi)
-		$rss->date_format = $config['date_format'];     // formato per la data
-		//$rss->CDATA       = 'content'; // contenuto del tag CDATA
-		
-		// Cicle feed URLS 		
-		foreach($sources as $key=>$link){
-			$rs[]=$rss->get($link['url'],$this->limit);			
+		$feed = new SimplePie();
+		$feed->set_feed_url($sources);
+		$feed->set_cache_location('./'.$config['cache_dir']);
+		$feed->set_item_limit($config['flimit']);
+		$feed->init();
+		$feed->handle_content_type();
+		$items= $feed->get_items();
+		foreach ($items as $k=>$item){
+			$feedtitles[]=$item->get_feed()->get_title();
+			$fitem['feedtitle']=$item->get_feed()->get_title();
+			$fitem['date']=$item->get_date($config['date_format']);
+			$fitem['authors']=$item->get_authors();
+			$fitem['title']=$item->get_title();
+			$fitem['permalink']=$item->get_permalink();
+			$myfeeds[]=$fitem;
 			}
-		
-		$ratio=12/count($rs);
-		if($ratio<3) {$ratio=3;}
-		
-        $data['feeds'] = $rs;
-        $data['ratio'] = $ratio;
+			
+		$data['myfeeds']= $myfeeds;
         
-        if(count($data['feeds'])>0){
+        if(count($data['myfeeds'])>0){
             $this->view($this->cms_module_path().'/widget_feedreader', $data);
         }
     }
