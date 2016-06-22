@@ -26,10 +26,13 @@ Otherwise create the dir by hands and make it writable from the server, usually:
 
 That's all<br>
 Alfredo Cosco
+
 ----------------------------------------------------------------------
+
 ## Changelog
 0.0.3 Corrected some bugs in <code>chache/</code> folder manage
 0.0.2 Simplepie bundles
+
 ----------------------------------------------------------------------
 ## LICENSE
 
