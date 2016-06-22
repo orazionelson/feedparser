@@ -1,14 +1,17 @@
 # [feedreader](https://github.com/orazionelson/feedreader)
 
-feedreader 0.2 is a widget for [No-CMS](https://github.com/goFrendiAsgard/No-CMS), a CodeIgniter Based CMS Framework.
+feedreader 0.0.3 is a widget for [No-CMS](https://github.com/goFrendiAsgard/No-CMS), a CodeIgniter Based CMS Framework.
 
 feedreader shows a widget with an rss/atom feed items.
 
-Starting from 0.2 version this module bundles [Simplepie 1.4](https://github.com/simplepie/simplepie) compiled in one file.
+Starting from 0.0.3 version this module bundles [Simplepie 1.4](https://github.com/simplepie/simplepie) compiled in one file.
 
 ## Install
 1) Copy or clone the <b>feedreader/</b> folder in No-CMS <b>modules/</b> directory.<br>
-2) Make writable the <b>cache/</b> directory in the feedreader module.
+2) Add a writable <b>cache/</b> directory in the feedreader module: 
+<pre>mkdir chache</pre>
+be sure that the chache/ is writable, commonly:
+<pre>chown -R mysuser:www-data cache/</pre>
 3) Go to <b>CMS Management->Modules</b> and Activate the module.<br>
 4) Add the key: <pre>{{ widget_name:feedreader }}</pre> in your theme layout or in your view.<br>
 

@@ -1,5 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * FeedReader Widget for No-CMS v 0.0.3
+ *
+ * @author Alfredo Cosco
+ */
 class Feedreader_widget extends CMS_Controller {
 	
 	protected $sources=array();

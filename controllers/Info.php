@@ -122,8 +122,19 @@ class Info extends CMS_Module {
     // ACTIVATION
     //////////////////////////////////////////////////////////////////////////////
     public function do_activate(){
+		// TODO : write your module activation script here
 		$module_path = $this->cms_module_path();
-        // TODO : write your module activation script here
+		$default_cache="modules/".$module_path."/cache";
+        //Add default cache directory
+        if(!is_writable("modules/".$module_path))
+			{
+				return false;
+			}
+		else{
+			if (!file_exists($default_cache)) {
+				mkdir($default_cache, 0755, true);
+				}
+			}       
         $this->cms_add_widget('feedreader', 'Feed Reader',
             PRIV_EVERYONE, $module_path.'/feedreader_widget/feed');
 		
@@ -141,6 +152,9 @@ class Info extends CMS_Module {
         
         $feeds = array('url'=>'http://nelsondev.blogspot.com/feeds/posts/default');
         $this->db->insert($this->t('feedreader_sources'),$feeds); 
+        
+        
+
             
                
     }
@@ -150,6 +164,7 @@ class Info extends CMS_Module {
     //////////////////////////////////////////////////////////////////////////////
     public function do_deactivate(){
 		$this->cms_remove_widget('feedreader');
+
         // TODO : write your module deactivation script here
     }
 
@@ -162,7 +177,7 @@ class Info extends CMS_Module {
         $minor        = $version_part[1];
         $build        = $version_part[2];
         $module_path  = $this->cms_module_path();
-
+		
         // TODO: Add your migration logic here.
 
         // e.g:
