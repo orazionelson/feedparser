@@ -128,6 +128,7 @@ class Info extends CMS_Module {
         //Add default cache directory
         if(!is_writable("modules/".$module_path))
 			{
+				$this->ERROR_MESSAGE = "The directory <b>modules/".$module_path.'</b> is not writable';
 				return false;
 			}
 		else{
